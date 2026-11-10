@@ -83,7 +83,7 @@ if ($hassiteconfig || has_capability('moodle/site:configview', context_system::i
                         'iconclass' => 'fa-solid fa-mobile-screen-button',
                         'title' => get_string('logocanappearapp', 'tool_mobile'),
                         'message' => get_string('logocanappearapp_desc', 'tool_mobile'),
-                        'buttonstr' => get_string('learnmore', 'tool_mobile'),
+                        'buttonstr' => get_string('viewplandetails', 'tool_mobile'),
                         'buttonurl' => $subscriptionurl,
                         'animation' => 1,
                         'animationtemplatelogo' => 1,
@@ -102,7 +102,7 @@ if ($hassiteconfig || has_capability('moodle/site:configview', context_system::i
                         'iconclass' => 'fa-solid fa-chart-line',
                         'title' => get_string('matomocantrackapp', 'tool_mobile'),
                         'message' => get_string('matomocantrackapp_desc', 'tool_mobile'),
-                        'buttonstr' => get_string('learnmore', 'tool_mobile'),
+                        'buttonstr' => get_string('viewplandetails', 'tool_mobile'),
                         'buttonurl' => $subscriptionurl,
                     ]),
                 ),
@@ -161,7 +161,7 @@ if ($hassiteconfig || has_capability('moodle/site:configview', context_system::i
             'title' => new lang_string('upgraderemovelimits', 'tool_mobile', $upgradeplanname),
             'icon' => '🚀',
             'message' => get_string('upgradeplanlimits', 'tool_mobile', $planname),
-            'buttonstr' => new lang_string('learnmore', 'tool_mobile'),
+            'buttonstr' => new lang_string('viewplandetails', 'tool_mobile'),
             'buttonurl' => (new \moodle_url("/admin/tool/mobile/subscription.php"))->out(true),
         ];
         $lastupdated = get_config('tool_mobile', 'subscriptioninfoupdated');
