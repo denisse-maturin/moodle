@@ -140,7 +140,7 @@
     }
 
     .tool-mobile-branding-preview-swatch-a {
-        background: #3cb878;
+        background: #38b6ff;
     }
 
     .tool-mobile-branding-preview-swatch-b {
@@ -329,7 +329,7 @@
 
     24%,
     42% {
-        background-color: #3cb878;
+        background-color: #38b6ff;
     }
 
     46%,
@@ -397,7 +397,7 @@
 
     28%,
     97% {
-        background-color: #3cb878;
+        background-color: #38b6ff;
     }
 
     100% {
@@ -584,7 +584,7 @@
     }
 
     .tool-mobile-logo-preview-brand-a {
-        background: #3cb878;
+        background: #38b6ff;
         animation-delay: -1s;
     }
 
@@ -798,3 +798,90 @@
     }
 }
 /* END Logo system alert animation. */
+
+/*
+ * Play/pause control for the branding and logo previews.
+ * The previews only play when the user presses the button, so nothing moves on its own (WCAG 2.2.2).
+ * While paused, each preview shows the final result instead of the empty start frame.
+ */
+.tool-mobile-animation-toggle {
+    /* Subtle by default: 24px is the minimum target size (WCAG 2.5.8); the icon keeps 3:1 contrast (1.4.11). */
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    z-index: 2;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.6);
+    color: #5c6370;
+    font-size: 0.625rem;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &:hover,
+    &:focus-visible {
+        background: #fff;
+        color: #1d2125;
+    }
+
+    &:focus-visible {
+        outline: 2px solid #0f6cbf;
+        outline-offset: 2px;
+    }
+}
+
+#page-admin-setting-premiumfeatures {
+    .tool-mobile-branding-preview-frame {
+        position: relative;
+    }
+
+    /* Start from the final three-colour combination, so the paused frame already shows the result. */
+    .tool-mobile-branding-preview-dot,
+    .tool-mobile-branding-preview-cursor,
+    .tool-mobile-branding-preview-header,
+    .tool-mobile-branding-preview-bar,
+    .tool-mobile-branding-preview-button {
+        animation-delay: calc(var(--tool-mobile-branding-preview-cycle) * -0.85);
+    }
+
+    .tool-mobile-branding-preview-wrapper:not(.is-playing) .tool-mobile-branding-preview-dot,
+    .tool-mobile-branding-preview-wrapper:not(.is-playing) .tool-mobile-branding-preview-cursor,
+    .tool-mobile-branding-preview-wrapper:not(.is-playing) .tool-mobile-branding-preview-swatch::after,
+    .tool-mobile-branding-preview-wrapper:not(.is-playing) .tool-mobile-branding-preview-header,
+    .tool-mobile-branding-preview-wrapper:not(.is-playing) .tool-mobile-branding-preview-bar,
+    .tool-mobile-branding-preview-wrapper:not(.is-playing) .tool-mobile-branding-preview-button {
+        animation-play-state: paused;
+    }
+
+    .tool-mobile-branding-preview-wrapper.is-playing .tool-mobile-branding-preview-dot,
+    .tool-mobile-branding-preview-wrapper.is-playing .tool-mobile-branding-preview-cursor,
+    .tool-mobile-branding-preview-wrapper.is-playing .tool-mobile-branding-preview-swatch::after,
+    .tool-mobile-branding-preview-wrapper.is-playing .tool-mobile-branding-preview-header,
+    .tool-mobile-branding-preview-wrapper.is-playing .tool-mobile-branding-preview-bar,
+    .tool-mobile-branding-preview-wrapper.is-playing .tool-mobile-branding-preview-button {
+        animation-play-state: running;
+    }
+}
+
+#page-admin-setting-logos {
+    .tool-mobile-system-alert-animation {
+        position: relative;
+    }
+
+    .tool-mobile-system-alert-wrapper:not(.is-playing) .tool-mobile-logo-preview-brand {
+        animation-play-state: paused;
+    }
+
+    .tool-mobile-system-alert-wrapper.is-playing .tool-mobile-logo-preview-brand {
+        animation-play-state: running;
+    }
+
+    .tool-mobile-logo-preview-caption {
+        padding: 0.5rem 1rem 0.75rem;
+    }
+}

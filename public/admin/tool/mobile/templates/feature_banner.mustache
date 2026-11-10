@@ -41,7 +41,7 @@
         "buttonurl": "https://example.com/admin/tool/mobile/subscription.php"
     }
 }}
-<div class="card border rounded-4 overflow-hidden mb-4 tool-mobile-settings-alert tool-mobile-system-alert-wrapper">
+<div class="card border rounded-4 overflow-hidden mb-4 tool-mobile-settings-alert tool-mobile-system-alert-wrapper" data-region="tool-mobile-animation">
     <div class="row g-0 align-items-stretch">
         <div class="col-12 {{#animation}}col-lg-8{{/animation}} bg-primary bg-opacity-10 py-5 px-5">
                 <div class="d-flex align-items-center gap-3 mb-3">
@@ -59,8 +59,35 @@
                 {{#animationtemplatelogo}}
                     {{> tool_mobile/feature_animation_logo}}
                 {{/animationtemplatelogo}}
+                <button type="button" class="tool-mobile-animation-toggle" data-action="tool-mobile-animation-toggle"
+                    data-play-label="{{#str}} playanimation, tool_mobile {{/str}}"
+                    data-pause-label="{{#str}} pauseanimation, tool_mobile {{/str}}"
+                    aria-label="{{#str}} playanimation, tool_mobile {{/str}}" title="{{#str}} playanimation, tool_mobile {{/str}}">
+                    <i class="fa-solid fa-play" aria-hidden="true"></i>
+                </button>
             </div>
+            {{#animationtemplatelogo}}
+            <div class="tool-mobile-logo-preview-caption small text-muted">{{#str}} logopreviewcaption, tool_mobile {{/str}}</div>
+            {{/animationtemplatelogo}}
         </div>
         {{/animation}}
     </div>
 </div>
+{{#js}}
+document.querySelectorAll('[data-action="tool-mobile-animation-toggle"]').forEach(function(button) {
+    if (button.dataset.initialised) {
+        return;
+    }
+    button.dataset.initialised = 1;
+    button.addEventListener('click', function() {
+        var region = button.closest('[data-region="tool-mobile-animation"]');
+        var playing = region.classList.toggle('is-playing');
+        var label = playing ? button.dataset.pauseLabel : button.dataset.playLabel;
+        button.setAttribute('aria-label', label);
+        button.setAttribute('title', label);
+        var icon = button.querySelector('i');
+        icon.classList.toggle('fa-play', !playing);
+        icon.classList.toggle('fa-pause', playing);
+    });
+});
+{{/js}}

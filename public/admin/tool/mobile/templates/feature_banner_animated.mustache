@@ -44,9 +44,15 @@
         <div class="form-text mt-2">
             <div class="row g-4">
                 <div class="col-12 col-lg-8 col-xl-6 text-center mb-3">
-                    <div class="tool-mobile-branding-preview-wrapper">
-                        <div class="rounded overflow-hidden border">
+                    <div class="tool-mobile-branding-preview-wrapper" data-region="tool-mobile-animation">
+                        <div class="rounded overflow-hidden border tool-mobile-branding-preview-frame">
                             {{> tool_mobile/feature_animation_custom}}
+                            <button type="button" class="tool-mobile-animation-toggle" data-action="tool-mobile-animation-toggle"
+                                data-play-label="{{#str}} playanimation, tool_mobile {{/str}}"
+                                data-pause-label="{{#str}} pauseanimation, tool_mobile {{/str}}"
+                                aria-label="{{#str}} playanimation, tool_mobile {{/str}}" title="{{#str}} playanimation, tool_mobile {{/str}}">
+                                <i class="fa-solid fa-play" aria-hidden="true"></i>
+                            </button>
                         </div>
 
                         {{#learnmore}}
@@ -75,4 +81,21 @@
         </div>
     </div>
 </div>
-
+{{#js}}
+document.querySelectorAll('[data-action="tool-mobile-animation-toggle"]').forEach(function(button) {
+    if (button.dataset.initialised) {
+        return;
+    }
+    button.dataset.initialised = 1;
+    button.addEventListener('click', function() {
+        var region = button.closest('[data-region="tool-mobile-animation"]');
+        var playing = region.classList.toggle('is-playing');
+        var label = playing ? button.dataset.pauseLabel : button.dataset.playLabel;
+        button.setAttribute('aria-label', label);
+        button.setAttribute('title', label);
+        var icon = button.querySelector('i');
+        icon.classList.toggle('fa-play', !playing);
+        icon.classList.toggle('fa-pause', playing);
+    });
+});
+{{/js}}
