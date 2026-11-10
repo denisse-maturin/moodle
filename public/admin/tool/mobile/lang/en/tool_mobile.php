@@ -122,7 +122,6 @@ $string['invaliduserquotawarning'] = 'The user quota (userquota) is set to an in
 $string['iosappid'] = 'iOS app\'s unique identifier';
 $string['iosappid_desc'] = 'This setting may be left as default unless you have a custom iOS app.';
 $string['launchviasiteinbrowser'] = 'Launch via site in system browser';
-$string['learnmore'] = 'Learn more';
 $string['learnmoreplan'] = 'To learn more about the Moodle app and its plans, see the <a href="{$a->url}" target="{$a->target}">Moodle app plans documentation{$a->icon}</a>.';
 $string['limitedcustomlangstrings'] = 'Total number of <strong>Custom language strings</strong> in your <strong>{$a->plan}</strong> plan: {$a->limit}. <a href="{$a->url}">View plan details</a>.';
 $string['limiteddisabledfeatures'] = 'Total number of <strong>Disabled features</strong> in your <strong>{$a->plan}</strong> plan: {$a->limit}. <a href="{$a->url}">View plan details</a>.';
@@ -261,6 +260,7 @@ $string['upgraderemovelimits'] = 'Upgrade to {$a} and remove all limits';
 $string['upgradetosubscription'] = 'Upgrade to {$a}';
 $string['upgradeyourplan'] = '(Upgrade your plan! 🚀)';
 $string['upgradeyourplanaction'] = 'Upgrade your plan';
+$string['viewplandetails'] = 'View plan details';
 $string['viewqrcode'] = 'View QR code';
 
 // Deprecated since Moodle 5.2.
